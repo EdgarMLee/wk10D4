@@ -84,11 +84,12 @@ JOIN cat_owners ON (cat_owners.cat_id = cats.id)
 JOIN owners ON (cat_owners.owner_id = owners.id)
 WHERE cats.birth_year > 2015;
 
-SELECT cats.name
-FROM cat_owners
-JOIN cats ON (cat_owners.cat_id = cats.id)
+SELECT DISTINCT cats.name
+FROM cat
+JOIN cat_owners ON (cat_owners.cat_id = cats.id)
 JOIN owners ON (cat_owners.owner_id = owners.id)
-WHERE owners.first_name = 'George' OR owners.first_name = 'Melynda';
+WHERE (owners.first_name = 'George' AND owners.last_name = 'Beatty')
+OR (owners.first_name = 'Melynda'AND owners.last_name = 'Abshire');
 
 -- PHASE 6
 UPDATE toys
