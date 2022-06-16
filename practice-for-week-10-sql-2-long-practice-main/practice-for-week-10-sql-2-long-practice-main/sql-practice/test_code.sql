@@ -50,4 +50,12 @@ CREATE TABLE toys (
 );
 
 -- PHASE 5
+SELECT name
+FROM owners
+WHERE
+
+SELECT name, birth_year
+FROM cats
+ORDER BY birth_year DESC;
+
 
