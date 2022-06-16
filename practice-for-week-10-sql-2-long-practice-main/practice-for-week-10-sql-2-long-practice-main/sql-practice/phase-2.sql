@@ -1,24 +1,27 @@
 PRAGMA foreign_keys=on; -- Turns foreign key support in SQLite3 on
 
 CREATE TABLE owners (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
  first_name varchar(15),
  last_name varchar(15)
  );
 
 CREATE TABLE cats (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
  name varchar(50),
  birth_year integer
  );
 
 CREATE TABLE toys (
- cat_id INTEGER REFERENCES cats(id),
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+ cat_id INTEGER NOT NULL REFERENCES cats(id),
  name varchar(15)
 );
 
 CREATE TABLE cat_owners (
-  cat_id INTEGER REFERENCES owners(id),
-  owner_id INTEGER REFERENCES cats(id)
-)
+  cat_id INTEGER NOT NULL REFERENCES owners(id),
+  owner_id INTEGER NOT NULL REFERENCES cats(id)
+);
 
 INSERT INTO owners
   (first_name, last_name)
