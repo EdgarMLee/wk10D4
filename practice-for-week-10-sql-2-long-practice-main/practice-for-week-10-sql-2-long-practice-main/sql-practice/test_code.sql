@@ -1,7 +1,9 @@
 -- PHASE 1
 CREATE TABLE Cats (
  name varchar(50),
- birth_year integer
+ birth_year integer,
+ toy_id INTEGER,
+ FOREIGN KEY (toy_id) REFERENCES Toys(id)
  );
 
 CREATE TABLE Owners (
