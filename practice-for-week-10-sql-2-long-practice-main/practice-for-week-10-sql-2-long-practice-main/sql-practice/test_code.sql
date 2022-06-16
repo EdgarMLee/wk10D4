@@ -69,3 +69,5 @@ JOIN owners ON (cat_owners.owner_id = owners.id)
 WHERE owners.first_name = 'George' OR owners.first_name = 'Melynda';
 
 -- PHASE 6
+UPDATE toys
+SET 
