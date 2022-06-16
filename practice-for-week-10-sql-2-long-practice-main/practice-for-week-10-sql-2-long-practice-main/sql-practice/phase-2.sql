@@ -10,15 +10,15 @@ CREATE TABLE cats (
  birth_year integer
  );
 
+CREATE TABLE toys (
+ cat_id INTEGER REFERENCES cats(id),
+ name varchar(15)
+);
+
 CREATE TABLE cat_owners (
   cat_id INTEGER REFERENCES owners(id),
   owner_id INTEGER REFERENCES cats(id)
 )
-
-CREATE TABLE toys (
- name varchar(15),
- cat_id INTEGER REFERENCES cats(id)
-);
 
 INSERT INTO owners
   (first_name, last_name)
