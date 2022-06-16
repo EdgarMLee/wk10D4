@@ -67,3 +67,5 @@ FROM cat_owners
 JOIN cats ON (cat_owners.cat_id = cats.id)
 JOIN owners ON (cat_owners.owner_id = owners.id)
 WHERE owners.first_name = 'George' OR owners.first_name = 'Melynda';
+
+-- PHASE 6
