@@ -1,23 +1,23 @@
 -- PHASE 1
-CREATE TABLE Cats (
+CREATE TABLE cats (
  name varchar(50),
- birth_year integer,
- toy_id INTEGER,
- FOREIGN KEY (toy_id) REFERENCES Toys(id)
+ birth_year integer
  );
 
-CREATE TABLE Owners (
+CREATE TABLE owners (
  first_name varchar(15),
  last_name varchar(15)
  );
 
-CREATE TABLE Toys (
- name varchar(15)
+CREATE TABLE toys (
+ name varchar(15),
+ cat_id INTEGER,
+ FOREIGN KEY (cat_id) REFERENCES cats(id)
 );
 
 CREATE TABLE cat_owner (
   cat_id INTEGER,
   owner_id INTEGER,
-  FOREIGN KEY (cat_id) REFERENCES Cats(id)
-  FOREIGN KEY (owner_id) REFERENCES Owners(id)
+  FOREIGN KEY (cat_id) REFERENCES cats(id)
+  FOREIGN KEY (owner_id) REFERENCES owners(id)
 )

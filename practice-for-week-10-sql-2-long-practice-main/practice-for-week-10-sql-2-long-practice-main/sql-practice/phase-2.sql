@@ -1,8 +1,28 @@
 PRAGMA foreign_keys=on; -- Turns foreign key support in SQLite3 on
--- Your code here
+
+CREATE TABLE owners (
+ first_name varchar(15),
+ last_name varchar(15)
+ );
+
+CREATE TABLE cats (
+ name varchar(50),
+ birth_year integer
+ );
+
+CREATE TABLE cat_owners (
+  cat_id INTEGER REFERENCES owners(id),
+  owner_id INTEGER REFERENCES cats(id)
+)
+
+CREATE TABLE toys (
+ name varchar(15),
+ cat_id INTEGER REFERENCES cats(id)
+);
 
 INSERT INTO owners
   (first_name, last_name)
+
 VALUES
   ('Nathan', 'Shanahan'),
   ('Joycelyn', 'Cummerata'),
@@ -14,6 +34,7 @@ VALUES
 
 INSERT INTO cats
   (name, birth_year)
+
 VALUES
   ('Smudge', 2014),
   ('Molly', 2015),
@@ -26,6 +47,7 @@ VALUES
 
 INSERT INTO cat_owners
   (cat_id, owner_id)
+
 VALUES
   (1, 1),
   (1, 2),
@@ -39,6 +61,7 @@ VALUES
 
 INSERT INTO toys
   (cat_id, name)
+
 VALUES
   (1, 'Catnip Mouse'),
   (2, 'Feather Wand'),
