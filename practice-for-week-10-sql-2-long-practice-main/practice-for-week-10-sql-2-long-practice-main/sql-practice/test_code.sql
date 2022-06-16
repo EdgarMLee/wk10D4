@@ -52,7 +52,7 @@ CREATE TABLE toys (
 -- PHASE 5
 SELECT name
 FROM owners
-WHERE
+WHERE **
 
 SELECT name, birth_year
 FROM cats
@@ -70,4 +70,6 @@ WHERE owners.first_name = 'George' OR owners.first_name = 'Melynda';
 
 -- PHASE 6
 UPDATE toys
-SET 
+SET name = 'Test'
+WHERE toys.cat_id IN
+(SELECT cats.id FROM cats WHERE name = 'Garfield');
