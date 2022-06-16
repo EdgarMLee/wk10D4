@@ -78,8 +78,10 @@ JOIN cat_owners ON (cat_owners.cat_id = cats.id)
 JOIN owners ON (cat_owners.owner_id = owners.id)
 WHERE owners.first_name LIKE 'H%';
 
-SELECT first_name, last_name
-FROM owners
+SELECT owners.first_name, owners.last_name
+FROM cats
+JOIN cat_owners ON (cat_owners.cat_id = cats.id)
+JOIN owners ON (cat_owners.owner_id = owners.id)
 WHERE cats.birth_year > 2015;
 
 SELECT cats.name
