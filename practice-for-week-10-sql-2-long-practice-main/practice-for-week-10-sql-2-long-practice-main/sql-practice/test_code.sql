@@ -73,6 +73,11 @@ SELECT name, birth_year
 FROM cats
 ORDER BY birth_year DESC;
 
+SELECT name FROM cats
+JOIN cat_owners ON (cat_owners.cat_id = cats.id)
+JOIN owners ON (cat_owners.owner_id = owners.id)
+WHERE owners.first_name LIKE 'H%';
+
 SELECT first_name, last_name
 FROM owners
 WHERE cats.birth_year > 2015;
