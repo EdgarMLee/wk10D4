@@ -67,7 +67,7 @@ CREATE TABLE toys (
 -- PHASE 5
 SELECT *
 FROM owners
-WHERE owners.last_name LIKE '%%'
+WHERE owners.last_name LIKE '%r%' LIMIT 1;
 
 SELECT name, birth_year
 FROM cats
