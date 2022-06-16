@@ -1,12 +1,20 @@
 -- PHASE 1
+
+DROP TABLE IF EXISTS toys;
+DROP TABLE IF EXISTS cat_owners;
+DROP TABLE IF EXISTS cats;
+DROP TABLE IF EXISTS owners;
+
 CREATE TABLE cats (
- name varchar(50),
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ name text,
  birth_year integer
  );
 
 CREATE TABLE owners (
- first_name varchar(15),
- last_name varchar(15)
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ first_name text,
+ last_name text
  );
 
 CREATE TABLE toys (
@@ -15,7 +23,7 @@ CREATE TABLE toys (
  FOREIGN KEY (cat_id) REFERENCES cats(id)
 );
 
-CREATE TABLE cat_owner (
+CREATE TABLE cat_owners (
   cat_id INTEGER,
   owner_id INTEGER,
   FOREIGN KEY (cat_id) REFERENCES cats(id)
@@ -25,15 +33,22 @@ CREATE TABLE cat_owner (
 -- PHASE 3
 SELECT cats.name
 FROM cats
-JOIN owners
-ON (cats.owner_id = owners.id)
-WHERE owners.name = 'Hermione'
+JOIN cat_owners ON (cats.id = cat_owners.cat_id)
+JOIN owners ON (owners.id = cat_owners.owner_id)
+WHERE owners.first_name = 'Hermione'
 
 SELECT toys.name
-FROM cats
-JOIN owners
-ON (cats.owner_id = owners.id)
-WHERE owners.name = 'Hermione'
+FROM toys
+JOIN cats ON (toys.cat_id = cats.id)
+JOIN cat_owners ON (cats.owner_id = cats.id)
+JOIN owners ON (cat_owners.owner_id = owners.id)
+WHERE owners.first_name = 'Hermione'
+
+SELECT toys.name
+FROM toys
+JOIN cat_owners ON (cat_owners.id = toys.cat_id)
+JOIN owners ON (cat_owners.owner_id = owners.id)
+WHERE owners.first_name = 'Hermione'
 
 -- PHASE 4
 CREATE TABLE cat_owner (
