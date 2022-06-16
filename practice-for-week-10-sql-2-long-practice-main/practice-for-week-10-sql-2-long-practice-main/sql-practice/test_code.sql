@@ -46,12 +46,12 @@ WHERE owners.first_name = 'Hermione'
 
 SELECT toys.name
 FROM toys
-JOIN cat_owners ON (cat_owners.id = toys.cat_id)
+JOIN cat_owners ON (cat_owners.cat_id = toys.cat_id)
 JOIN owners ON (cat_owners.owner_id = owners.id)
 WHERE owners.first_name = 'Hermione'
 
 -- PHASE 4
-CREATE TABLE cat_owner (
+CREATE TABLE cat_owners (
   cat_id INTEGER,
   owner_id INTEGER,
   FOREIGN KEY (cat_id) REFERENCES cats(id) ON DELETE CASCADE
@@ -65,9 +65,9 @@ CREATE TABLE toys (
 );
 
 -- PHASE 5
-SELECT name
+SELECT *
 FROM owners
-WHERE **
+WHERE owners.last_name LIKE '%%'
 
 SELECT name, birth_year
 FROM cats
