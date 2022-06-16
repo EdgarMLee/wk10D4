@@ -93,6 +93,8 @@ OR (owners.first_name = 'Melynda'AND owners.last_name = 'Abshire');
 
 -- PHASE 6
 UPDATE toys
-SET name = 'Test'
+SET name = 'Pooky'
+WHERE name = 'Cheetos';
+
 WHERE toys.cat_id IN
 (SELECT cats.id FROM cats WHERE name = 'Garfield');
